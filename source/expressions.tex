@@ -7768,13 +7768,8 @@ a prvalue core constant expression whose value
 satisfies the following constraints:
 \begin{itemize}
   \item
-  if the value is an object of class type,
-  each non-static data member of reference type refers to
-  an entity that is a permitted result of a constant expression,
-
-  \item
-  if the value is an object of scalar type,
-  it does not have an indeterminate value\iref{basic.indet},
+  if the value is of scalar type,
+  it is not an indeterminate value\iref{basic.indet},
 
   \item
   if the value is of pointer type, it contains
@@ -7785,11 +7780,21 @@ satisfies the following constraints:
 
   \item
   if the value is of pointer-to-member-function type,
-  it does not designate an immediate function, and
+  it does not designate an immediate function,
 
   \item
-  if the value is an object of class or array type,
-  each subobject satisfies these constraints for the value.
+  if the value is of class type,
+  each non-static data member of reference type refers to
+  an entity that is a permitted result of a constant expression,
+
+  \item
+  if the value is of class type,
+  the value of each non-static data member
+  of object type satisfies these constraints, and
+
+  \item
+  if the value is of array type,
+  the value of each element satisfies these constraints.
 \end{itemize}
 An entity is a
 \defnx{permitted result of a constant expression}{constant expression!permitted result of}
